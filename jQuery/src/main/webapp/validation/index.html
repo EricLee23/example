@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD>
+<TITLE>jQuery Validation Demo</TITLE>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="css/screen.css" type="text/css">
+<script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="jquery.validate.js"></script>
+<script type="text/javascript" src="messages_zh.js"></script>
+<script>
+$.validator.setDefaults({
+	submitHandler: function() { alert("submitted!"); }
+});
+$().ready(function() {
+	$("#signupForm").validate({
+		rules: {
+			user: {
+				required: true,
+				email: true
+			},
+			pass: {
+				required: true,
+				minlength: 6
+			},
+			confirm_pass: {
+				required: true,
+				equalTo: "#pass"
+			}
+		}
+	});
+});
+</script>
+<style type="text/css">
+#signupForm label.error {
+	margin-left: 10px;
+	width: auto;
+	display: inline;
+}
+</style>
+</HEAD>
+<BODY>
+	<h1>Signup Form Test</h1>
+	<form id="signupForm">
+		<input id="user" type="text" name="user"/><br/>
+		<input id="pass" type="password" name="pass"/><br/>
+		<input id="confirm_pass" type="password" name="confirm_pass"/><br/>
+		<input type="submit"/>
+	</form>
+</BODY>
+</HTML>
